@@ -3,21 +3,19 @@
 (function(){
   // event types with matching icon (mix of install/inspection/estimate/warranty/permit/review/social)
   var types = [
-    {t:"New roof install completed",      icon:"\u2705"},
-    {t:"Roof install in progress",        icon:"\ud83d\udd28"},
-    {t:"Roof inspection started",         icon:"\ud83d\udd0d"},
-    {t:"Roof inspection in progress",     icon:"\ud83d\udd0d"},
-    {t:"Roof inspection completed",       icon:"\u2705"},
-    {t:"Estimate started",                icon:"\ud83d\udcdd"},
-    {t:"Estimate in progress",            icon:"\ud83d\udcdd"},
-    {t:"Estimate completed",              icon:"\u2705"},
-    {t:"Warranty registered",             icon:"\ud83d\udee1\ufe0f"},
-    {t:"Warranty paperwork in progress",  icon:"\ud83d\udee1\ufe0f"},
-    {t:"Permit approved",                 icon:"\ud83d\udcc4"},
-    {t:"Permit application in progress",  icon:"\ud83d\udcc4"},
-    {t:"Proposal walkthrough booked",     icon:"\ud83d\udcc5"},
-    {t:"New 5-star review received",      icon:"\u2b50"},
-    {t:"New project posted on Instagram", icon:"\ud83d\udcf8"}
+    {t:"Free roof inspection completed",   icon:"\u2705"},
+    {t:"Roof inspection booked",           icon:"\ud83d\udcc5"},
+    {t:"Roof inspection in progress",      icon:"\ud83d\udd0d"},
+    {t:"Photo report sent to homeowner",   icon:"\ud83d\udcf8"},
+    {t:"Free inspection scheduled",        icon:"\ud83d\udcc5"},
+    {t:"Roof inspection completed",        icon:"\u2705"},
+    {t:"Same-day inspection requested",    icon:"\u26a1"},
+    {t:"New roof install completed",       icon:"\u2705"},
+    {t:"Roof install in progress",         icon:"\ud83d\udd28"},
+    {t:"Leak inspection completed",        icon:"\ud83d\udd0d"},
+    {t:"New 5-star review received",       icon:"\u2b50"},
+    {t:"New project posted on Instagram",  icon:"\ud83d\udcf8"},
+    {t:"Homeowner booked a walkthrough",   icon:"\ud83d\udcc5"}
   ];
 
   // real service-area cities
