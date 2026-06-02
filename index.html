@@ -32,7 +32,19 @@
 .pgrid figcaption{padding:7px 9px;font-size:11px;color:#5a6677}
 .pgrid figcaption b{display:block;color:#14803a;font-size:12px}
 @media(max-width:600px){.topbadge .t span{display:none}.three{grid-template-columns:1fr}.btn{width:100%;margin:6px 0;text-align:center}.btn-row{display:flex;flex-direction:column}}
-</style></head><body>
+</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-YWZ9KR72C7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YWZ9KR72C7');
+/* GLR conversion event tracking */
+document.addEventListener('click',function(e){
+ var el=e.target.closest('a,button'); if(!el) return;
+ var t=(el.textContent||'').trim().toLowerCase();
+ var href=(el.getAttribute('href')||'');
+ if(el.getAttribute('onclick')&&el.getAttribute('onclick').indexOf('_scheduler.show')>-1){gtag('event','schedule_open',{page:location.pathname});}
+ else if(href.indexOf('sms:')===0){gtag('event','text_click',{label:t,number:href});}
+ else if(href.indexOf('tel:')===0){gtag('event','call_click',{label:t,number:href});}
+},true);
+</script>
+</head><body>
 <div class="topnav"><div class="topnav-in">
 <img src="assets/img/official-logo-pill.png" alt="Green Ladder Roofing">
 <div class="topbadge"><span class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="t">Highly rated by<span>local homeowners</span></span></div>
