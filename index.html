@@ -78,16 +78,7 @@
 <div class="hero photo" style="background-image:url(assets/img/shingle.jpg)"><div class="kicker">Yours to Keep</div><h1>Your Photo Report</h1><p>You see your roof the way we see it.</p></div>
 <div class="wrap"><div class="card">
 <div class="intro">After the inspection, you get a documented photo report of your roof. This is one of the things that sets a real inspection apart from a quick look from the driveway. Here are examples of the kind of documentation you receive, and recent Green Ladder roofs across the area.</div>
-<div class="pgrid">
-<figure><img src="assets/img/inspect-detail.jpg" alt="Fascia and gutter detail documentation" loading="lazy"><figcaption><b>Edge &amp; gutter detail</b>Documented close-up</figcaption></figure>
-<figure><img src="assets/img/inspect-damage.jpg" alt="Roof edge wear documentation" loading="lazy"><figcaption><b>Wear documentation</b>What we flag</figcaption></figure>
-<figure><img src="assets/img/gallery/p12.jpg" alt="Metal shingle roof" loading="lazy"><figcaption><b>Metal shingle</b>La Ca&ntilde;ada</figcaption></figure>
-<figure><img src="assets/img/gallery/p07.jpg" alt="Tile roof with solar" loading="lazy"><figcaption><b>Tile + solar</b>Completed</figcaption></figure>
-<figure><img src="assets/img/gallery/p05.jpg" alt="Spanish barrel tile" loading="lazy"><figcaption><b>Spanish tile</b>Ridge detail</figcaption></figure>
-<figure><img src="assets/img/web10.jpg" alt="Architectural shingle detail" loading="lazy"><figcaption><b>Craftsmanship detail</b>Architectural shingle</figcaption></figure>
-<figure><img src="assets/img/web1.jpg" alt="Flat commercial roof" loading="lazy"><figcaption><b>Flat roof system</b>Commercial</figcaption></figure>
-<figure><img src="assets/img/web9.jpg" alt="Finished shingle roof" loading="lazy"><figcaption><b>Finished roof</b>Residential</figcaption></figure>
-</div>
+<div class="pgrid" id="pgrid"></div>
 <h2>Why the photo report matters</h2>
 <ul>
 <li>You can see exactly what is going on, no guessing or taking our word for it</li>
@@ -148,6 +139,41 @@
 <script>
 function showTab(id){document.querySelectorAll('.tabsec').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.tabbtn').forEach(b=>{var on=b.dataset.tab===id;b.classList.toggle('active',on);b.setAttribute('aria-selected',on);});window.scrollTo(0,0);if(history.pushState)history.pushState(null,'','#'+id);}
 window.addEventListener('load',()=>{var h=location.hash.replace('#','');if(h&&document.getElementById(h))showTab(h);});
+</script>
+<script>
+// Shuffling project gallery — different mix each visit, draws from full pool
+(function(){
+  var pool=[
+    {i:"web2.jpg",t:"Asphalt Shingle Roof",d:"Full replacement, aerial"},
+    {i:"web4.jpg",t:"Shingle Roof",d:"Finished, aerial"},
+    {i:"web5.jpg",t:"Dark Shingle Roof",d:"Finished residential"},
+    {i:"web1.jpg",t:"Flat Roof System",d:"Commercial"},
+    {i:"web6.jpg",t:"TPO Cool Roof",d:"Flat / low-slope"},
+    {i:"web9.jpg",t:"Finished Roof",d:"Residential"},
+    {i:"web10.jpg",t:"Craftsmanship Detail",d:"Architectural shingle"},
+    {i:"gallery/p04.jpg",t:"On the Job",d:"La Ca\u00f1ada"},
+    {i:"gallery/p12.jpg",t:"Metal Shingle Roof",d:"High fire zone"},
+    {i:"gallery/p07.jpg",t:"Clay Tile + Solar",d:"Full system"},
+    {i:"gallery/p05.jpg",t:"Spanish Barrel Tile",d:"Ridge detail"},
+    {i:"gallery/p08.jpg",t:"Asphalt Shingle Roof",d:"Aerial"},
+    {i:"gallery/p09.jpg",t:"GAF Shingle Roof",d:"Full replacement"},
+    {i:"gallery/p06.jpg",t:"TPO Cool Roof",d:"Sun Valley"},
+    {i:"cc-fresh2.jpg",t:"Clay Tile Roof",d:"Valley &amp; chimney detail"},
+    {i:"cc-fresh7.jpg",t:"Spanish Tile Roof",d:"Aerial view"},
+    {i:"cc-fresh8.jpg",t:"Clay Tile Roof",d:"Multi-valley aerial"},
+    {i:"cc-fresh17.jpg",t:"Clay Tile Roof",d:"Roof plane overview"},
+    {i:"cc-fresh27.jpg",t:"Clay Tile Roof",d:"Ridge cap aerial"},
+    {i:"cc-fresh35.jpg",t:"Tile Roof",d:"Eave &amp; soffit profile"},
+    {i:"cc-fresh37.jpg",t:"Tile Roof",d:"Ridge &amp; hip detail"},
+    {i:"cc-fresh33.jpg",t:"Flashing Detail",d:"Edge &amp; gutter transition"},
+    {i:"inspect-detail.jpg",t:"Edge &amp; Gutter Detail",d:"Documented close-up"},
+    {i:"inspect-damage.jpg",t:"Wear Documentation",d:"What we flag"}
+  ];
+  for(var s=pool.length-1;s>0;s--){var r=Math.floor(Math.random()*(s+1));var tmp=pool[s];pool[s]=pool[r];pool[r]=tmp;}
+  var show=pool.slice(0,9);
+  var html=show.map(function(p){return '<figure><img src="assets/img/'+p.i+'" alt="'+p.t+'" loading="lazy"><figcaption><b>'+p.t+'</b>'+p.d+'</figcaption></figure>';}).join('');
+  var el=document.getElementById('pgrid'); if(el) el.innerHTML=html;
+})();
 </script>
 <script src="assets/social-proof.js?v=2"></script>
 </body></html>
