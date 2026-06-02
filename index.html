@@ -147,4 +147,5 @@
 function showTab(id){document.querySelectorAll('.tabsec').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.tabbtn').forEach(b=>{var on=b.dataset.tab===id;b.classList.toggle('active',on);b.setAttribute('aria-selected',on);});window.scrollTo(0,0);if(history.pushState)history.pushState(null,'','#'+id);}
 window.addEventListener('load',()=>{var h=location.hash.replace('#','');if(h&&document.getElementById(h))showTab(h);});
 </script>
+<script src="assets/social-proof.js?v=2"></script>
 </body></html>
