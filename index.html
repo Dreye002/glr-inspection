@@ -212,4 +212,19 @@ window.addEventListener('load',()=>{var h=location.hash.replace('#','');if(h&&do
 <div class="sticky-cta"><a class="stext" href="sms:+16265695289">Text Taylor</a><a class="scall" href="tel:+16265695289">Call</a><a class="ssec" href="#book" onclick="showTab('book');return false">Request Time</a></div>
 <script src="assets/social-proof.js?v=2"></script>
 <script data-api-key="vet742vqllcklcithow2rkz7" data-schedulerid="sched_fnoew7b260arkvnv4il94s9i" defer id="se-widget-embed" src="https://embed.scheduler.servicetitan.com/scheduler-v1.js"></script>
+<script>
+/* Redirect to the Thank-You page once the ServiceTitan scheduler reports a completed booking.
+   ST scheduler posts a message on success; we listen for it. Falls back gracefully if the
+   event name differs across ST versions. */
+window.addEventListener('message',function(e){
+  try{
+    var d=e.data||{};
+    var s=(typeof d==='string')?d:(d.type||d.event||d.name||'');
+    s=(''+s).toLowerCase();
+    if(s.indexOf('schedul')>-1 && (s.indexOf('complete')>-1||s.indexOf('success')>-1||s.indexOf('booked')>-1||s.indexOf('submit')>-1)){
+      window.location.href='/thank-you';
+    }
+  }catch(err){}
+},false);
+</script>
 </body></html>
