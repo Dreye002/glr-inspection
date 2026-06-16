@@ -35,6 +35,15 @@
 gtag('event','inspection_booked',{page:location.pathname,value:1});
 gtag('event','conversion',{send_to:'G-YWZ9KR72C7',event_category:'lead',event_label:'inspection_booked'});
 </script>
+<!-- Meta Pixel: fire Lead conversion on booking thank-you load -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1957031989024873');
+fbq('track','PageView');
+fbq('track','Lead',{content_name:'Free Roof Inspection Booked'});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1957031989024873&ev=Lead&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
 </head><body>
 <div class="topnav"><div class="topnav-in">
 <a href="/"><img src="assets/img/official-logo-pill.png" alt="Green Ladder Roofing"></a>
@@ -59,9 +68,9 @@ gtag('event','conversion',{send_to:'G-YWZ9KR72C7',event_category:'lead',event_la
 </div>
 
 <div class="card" style="text-align:center">
-<h2 style="margin-top:0">Have an active leak or an urgent concern?</h2>
-<p>If water is coming in now, let us know so we can prioritize getting out to you.</p>
-<div class="btn-row"><a class="btn solid" href="sms:+16265695289">Text Taylor</a><a class="btn" href="tel:+16265695289">Call (626) 569-5289</a></div>
+<h2 style="margin-top:0">Add it to your calendar</h2>
+<p>So you don&rsquo;t forget &mdash; add a placeholder to your calendar now. We&rsquo;ll confirm the exact time with you.</p>
+<div class="btn-row"><a class="btn solid" id="addcal" href="#">&#128197; Add to Calendar</a></div>
 </div>
 
 <div class="card" style="text-align:center">
@@ -75,4 +84,23 @@ gtag('event','conversion',{send_to:'G-YWZ9KR72C7',event_category:'lead',event_la
 
 <div class="foot">Green Ladder Roofing &amp; Waterproofing &middot; GAF Master Elite Contractor &middot; (626) 569-5289 &middot; <a href="https://greenladderroofinginc.com">greenladderroofinginc.com</a>
 <div class="disclaim">This page is for general information. Pricing, warranty specifics, financing, and start dates are confirmed by your rep for your exact project.</div></div>
+<script>
+/* Add-to-calendar: build an .ics placeholder for the inspection */
+document.getElementById('addcal').addEventListener('click',function(e){
+  e.preventDefault();
+  function fmt(d){return d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';}
+  var start=new Date(Date.now()+2*864e5); start.setHours(10,0,0,0); /* placeholder: 2 days out, 10am */
+  var end=new Date(start.getTime()+45*6e4);
+  var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Green Ladder Roofing//Inspection//EN','BEGIN:VEVENT',
+    'UID:'+Date.now()+'@greenladderroofinginc.com','DTSTAMP:'+fmt(new Date()),'DTSTART:'+fmt(start),'DTEND:'+fmt(end),
+    'SUMMARY:Green Ladder Roofing - Free Roof Inspection (time to be confirmed)',
+    'DESCRIPTION:Your free roof inspection with Green Ladder Roofing. Our team will confirm the exact time with you. Questions? Call or text (626) 569-5289.',
+    'LOCATION:Your home','BEGIN:VALARM','TRIGGER:-PT2H','ACTION:DISPLAY','DESCRIPTION:Green Ladder Roof Inspection reminder','END:VALARM',
+    'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  var blob=new Blob([ics],{type:'text/calendar'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='green-ladder-roof-inspection.ics';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  if(window.gtag)gtag('event','add_to_calendar',{page:location.pathname});
+});
+</script>
 </body></html>
