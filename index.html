@@ -230,11 +230,6 @@
   @media (min-width: 1024px) {
     [data-faqgrid] { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; align-items: start; }
   }
-  /* Storm note: mobile shows first sentence only (3.1) */
-  @media (max-width: 767px) {
-    [data-stormfull] { display: none !important; }
-  }
-  @media (min-width: 768px) { [data-stormshort] { display: none !important; } }
   /* Crew headshots: trim to 6 on mobile to cut scroll (3.3) */
   @media (max-width: 767px) { [data-crewextra] { display: none !important; } }
   /* Fix (2026-08-06): content inside a collapsible <details data-mobacc> uses
@@ -249,8 +244,15 @@
   }
   /* Consolidated credentials 3-col band + financing accordion (Bruce, 2026-08-05) */
   [data-finance-acc][open] [data-finance-chev] { transform: rotate(90deg); }
+  /* Premium card treatment on the credentials band (Bruce, 2026-08-06) */
+  [data-credsgrid] { border-radius: 8px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
   @media (max-width: 899px) {
     [data-credsgrid] { grid-template-columns: 1fr !important; }
+  }
+  /* Stats rows: on mobile let the right text wrap under the label, indented */
+  @media (max-width: 767px) {
+    [data-statrow] { flex-wrap: wrap !important; gap: 2px 14px !important; }
+    [data-statrow] > div:last-child { flex: 1 1 100% !important; padding-left: calc(3.2em + 14px); }
   }
   /* #3 Reviews: 3 equal columns desktop, tighter body copy (Bruce, 2026-08-05) */
   [data-reviewgrid] > figure p, [data-reviewgrid] details p { font-size: 15px !important; line-height: 1.5 !important; }
@@ -462,8 +464,8 @@
 </section>
 
 <section data-screen-label="Storm note" style="background: #FDFCFA; border-bottom: 1px solid rgba(22,33,27,.16);">
-  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(44px, 5vw, 72px) clamp(18px, 4vw, 28px);">
-    <p data-anim="1" style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(24px, 2.9vw, 40px); line-height: 1.4; letter-spacing: -.008em; max-width: 62ch; margin: 0 auto; text-align: center; background: linear-gradient(90deg, #1C2A22 0 50%, rgba(22,33,27,.58) 50%); background-size: 220% 100%; background-position: 100% 0; -webkit-background-clip: text; background-clip: text; color: transparent; animation: textWipe linear both; animation-timeline: view(); animation-range: entry 40% cover 62%;"><span data-stormfull="1">In our part of Southern California, we can go months with almost no rain, then get a few strong storms. Small roof issues now become expensive leaks later. A documented inspection <em>before</em> rainy season beats an emergency during the first storm.</span><span data-stormshort="1">In our part of Southern California, we can go months with almost no rain, then get a few strong storms.</span></p>
+  <div style="max-width: 1280px; margin: 0 auto; padding: clamp(28px, 4vw, 48px) clamp(18px, 4vw, 28px);">
+    <p data-anim="1" style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(18px, 2.1vw, 22px); line-height: 1.5; letter-spacing: -.005em; max-width: 640px; margin: 0 auto; text-align: center; color: #777777;">In our part of Southern California, we can go months with almost no rain, then get a few strong storms. Small roof issues now become expensive leaks later. A documented inspection <em>before</em> rainy season beats an emergency during the first storm.</p>
   </div>
 </section>
 
@@ -561,22 +563,22 @@
     </div>
     <div data-credsgrid="1" style="display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 1fr); gap: 1px; background: rgba(22,33,27,.14); border: 1px solid rgba(22,33,27,.14); margin-top: 34px;">
 
-      <div data-credcol="1" style="background: #1C5230; padding: clamp(26px, 3vw, 40px) clamp(22px, 2.4vw, 32px);">
-        <div data-anim="1" style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(237,233,222,.2); animation: riseSm .8s ease both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
-          <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(28px, 3.2vw, 40px); line-height: 1; color: #FDFCFA; flex: 0 0 auto; min-width: 3.4em;">4.9&#9733;</div>
-          <div style="font-size: 14.5px; line-height: 1.5; color: rgba(237,233,222,.9);">from 250+ local homeowners across the greater San Gabriel Valley, including Pasadena, Altadena, Arcadia, Glendale, La Ca&ntilde;ada, San Marino, Monrovia, Sierra Madre and other nearby cities</div>
+      <div data-credcol="1" style="background: #1C5230; padding: clamp(20px, 2.4vw, 28px) clamp(20px, 2.4vw, 28px);">
+        <div data-anim="1" data-statrow="1" style="display: flex; align-items: baseline; gap: 14px; padding: 11px 0; animation: riseSm .8s ease both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
+          <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; line-height: 1; color: #FFFFFF; flex: 0 0 auto; min-width: 3.2em;">4.9&#9733;</div>
+          <div style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.9); max-width: 540px;">from 250+ local homeowners across the greater San Gabriel Valley, including Pasadena, Altadena, Arcadia, Glendale, La Ca&ntilde;ada, San Marino, Monrovia, Sierra Madre and other nearby cities</div>
         </div>
-        <div data-anim="1" style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(237,233,222,.2); animation: riseSm .8s ease .06s both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
-          <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(24px, 2.6vw, 32px); line-height: 1; color: #FDFCFA; flex: 0 0 auto; min-width: 3.4em;">24&ndash;48<span style="font-size: .5em;"> hrs</span></div>
-          <div style="font-size: 14.5px; line-height: 1.5; color: rgba(237,233,222,.9);">Photo report delivered within 24&ndash;48 hours</div>
+        <div data-anim="1" data-statrow="1" style="display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-top: 1px solid rgba(255,255,255,.15); animation: riseSm .8s ease .06s both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
+          <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; line-height: 1; color: #FFFFFF; flex: 0 0 auto; min-width: 3.2em;">24&ndash;48<span style="font-size: .55em;"> hrs</span></div>
+          <div style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.9); max-width: 540px;">Photo report delivered within 24&ndash;48 hours</div>
         </div>
-        <div data-anim="1" style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(237,233,222,.2); animation: riseSm .8s ease .12s both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
-          <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(24px, 2.6vw, 32px); line-height: 1; color: #FDFCFA; flex: 0 0 auto; min-width: 3.4em;">30&ndash;45<span style="font-size: .5em;"> min</span></div>
-          <div style="font-size: 14.5px; line-height: 1.5; color: rgba(237,233,222,.9);">Most inspections done on site in under an hour</div>
+        <div data-anim="1" data-statrow="1" style="display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-top: 1px solid rgba(255,255,255,.15); animation: riseSm .8s ease .12s both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
+          <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; line-height: 1; color: #FFFFFF; flex: 0 0 auto; min-width: 3.2em;">30&ndash;45<span style="font-size: .55em;"> min</span></div>
+          <div style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.9); max-width: 540px;">Most inspections done on site in under an hour</div>
         </div>
-        <div data-anim="1" style="display: flex; align-items: baseline; gap: 14px; padding: 12px 0; animation: riseSm .8s ease .18s both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
-          <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(24px, 2.6vw, 32px); line-height: 1; color: #FDFCFA; flex: 0 0 auto; min-width: 3.4em;">Yours</div>
-          <div style="font-size: 14.5px; line-height: 1.5; color: rgba(237,233,222,.9);">You keep the report even if you don't hire us</div>
+        <div data-anim="1" data-statrow="1" style="display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-top: 1px solid rgba(255,255,255,.15); animation: riseSm .8s ease .18s both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
+          <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; line-height: 1; color: #FFFFFF; flex: 0 0 auto; min-width: 3.2em;">Yours</div>
+          <div style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.9); max-width: 540px;">You keep the report even if you don't hire us</div>
         </div>
       </div>
 
@@ -1282,7 +1284,7 @@ class Component extends DCLogic {
       }, 150);
     }
   }, true);
-  // Auto-open the scheduler 20 seconds after load (fires once). Retries if the
+  // Auto-open the scheduler 45 seconds after load (fires once). Retries if the
   // widget script hasn't finished loading yet (mobile can be slower).
   var autoFired = false;
   setTimeout(function(){
@@ -1293,7 +1295,7 @@ class Component extends DCLogic {
       if (openScheduler()) { autoFired = true; clearInterval(iv); }
       else if (tries > 40) clearInterval(iv);
     }, 200);
-  }, 20000);
+  }, 45000);
 })();
 </script>
 </body>
