@@ -1288,10 +1288,6 @@ class Component extends DCLogic {
     if (document.getElementById('se-widget-iframe-container')) return; // already open
     openScheduler();
   }, 15000);
-  // Diagnostic: log widget readiness so we can see in console if _scheduler loaded.
-  setTimeout(function(){
-    console.log('[GLR scheduler] window._scheduler =', typeof window._scheduler, window._scheduler);
-  }, 4000);
 })();
 </script>
 </body>
