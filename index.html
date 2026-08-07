@@ -258,10 +258,13 @@
   @media (max-width: 899px) {
     [data-credsgrid] { grid-template-columns: 1fr !important; }
   }
-  /* Stats rows: on mobile let the right text wrap under the label, indented */
+  /* Stats rows: on mobile let the right text wrap under the label, indented.
+     Trimmed padding + text size to lighten the band's visual weight (Bruce, 2026-08-06). */
   @media (max-width: 767px) {
-    [data-statrow] { flex-wrap: wrap !important; gap: 2px 14px !important; }
-    [data-statrow] > div:last-child { flex: 1 1 100% !important; padding-left: calc(3.2em + 14px); }
+    [data-credcol="1"] { padding: 24px 20px !important; }
+    [data-statrow] { flex-wrap: wrap !important; gap: 2px 14px !important; padding: 8px 0 !important; }
+    [data-statrow] > div:first-child { font-size: 20px !important; }
+    [data-statrow] > div:last-child { flex: 1 1 100% !important; padding-left: calc(3.2em + 14px); font-size: 13px !important; }
   }
   /* #3 Reviews: 3 equal columns desktop, tighter body copy (Bruce, 2026-08-05) */
   [data-reviewgrid] > figure p, [data-reviewgrid] details p { font-size: 15px !important; line-height: 1.5 !important; }
