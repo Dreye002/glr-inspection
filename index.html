@@ -1282,11 +1282,17 @@ class Component extends DCLogic {
       }, 150);
     }
   }, true);
-  // Auto-open the scheduler 15 seconds after load (fires once).
+  // Auto-open the scheduler 15 seconds after load (fires once). Retries if the
+  // widget script hasn't finished loading yet (mobile can be slower).
+  var autoFired = false;
   setTimeout(function(){
-    if (document.hidden) return;
-    if (document.getElementById('se-widget-iframe-container')) return; // already open
-    openScheduler();
+    if (autoFired) return;
+    var tries = 0;
+    var iv = setInterval(function(){
+      tries++;
+      if (openScheduler()) { autoFired = true; clearInterval(iv); }
+      else if (tries > 40) clearInterval(iv);
+    }, 200);
   }, 15000);
 })();
 </script>
