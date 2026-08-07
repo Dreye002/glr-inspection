@@ -244,6 +244,14 @@
   }
   /* Consolidated credentials 3-col band + financing accordion (Bruce, 2026-08-05) */
   [data-finance-acc][open] [data-finance-chev] { transform: rotate(90deg); }
+  /* Service-area map card (Bruce, 2026-08-06) */
+  #service-area summary::-webkit-details-marker { display: none; }
+  #service-area summary { list-style: none; }
+  #service-area[open] [data-sachev] { transform: rotate(180deg); }
+  @media (max-width: 767px) {
+    #service-area > div { grid-template-columns: 1fr !important; }
+    #service-area [data-salist] ul { grid-template-columns: 1fr 1fr !important; }
+  }
   /* Premium card treatment on the credentials band (Bruce, 2026-08-06) */
   [data-credsgrid] { border-radius: 8px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
   @media (max-width: 899px) {
@@ -323,7 +331,7 @@
         <span style="display: block; width: 22px; height: 1px; background: #1C2A22;"></span>
         <span style="display: block; width: 22px; height: 1px; background: #1C2A22;"></span>
       </button>
-      <a data-hdrcta="1" class="se-booking-show" href="#book" style="background: linear-gradient(158deg, #F7E9BE 0%, #E0C078 28%, #C69C46 50%, #E6CB88 74%, #C8A24E 100%); color: #1B1B1B; border: 1px solid #98782F; box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 1px 3px rgba(38,28,6,.18); padding: 10px 15px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 16px; white-space: nowrap; letter-spacing: .05em; font-weight: 500; text-transform: uppercase; transition: background .2s ease, box-shadow .2s ease; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;" style-hover="background: linear-gradient(158deg, #E6CB88 0%, #C69C46 30%, #A98033 55%, #C8A24E 80%, #9A7A31 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(74,54,14,.28), 0 3px 8px rgba(38,28,6,.26); text-decoration: none;"><span data-long="1">Free Photo Inspection &amp; Estimate</span><span data-short="1">Free Inspection</span></a>
+      <a data-hdrcta="1" class="se-booking-show" href="#book" style="background: linear-gradient(158deg, #F7E9BE 0%, #E0C078 28%, #C69C46 50%, #E6CB88 74%, #C8A24E 100%); color: #1B1B1B; border: 1px solid #98782F; box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 1px 3px rgba(38,28,6,.18); padding: 10px 15px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight: 600; font-size: 16px; white-space: nowrap; letter-spacing: .05em; font-weight: 500; text-transform: uppercase; transition: background .2s ease, box-shadow .2s ease; min-height: 44px; display: inline-flex; align-items: center; justify-content: center;" style-hover="background: linear-gradient(158deg, #E6CB88 0%, #C69C46 30%, #A98033 55%, #C8A24E 80%, #9A7A31 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.42), inset 0 -1px 0 rgba(74,54,14,.28), 0 3px 8px rgba(38,28,6,.26); text-decoration: none;"><span>Free Photo Inspection &amp; Estimate</span></a>
     </div>
   </div>
 </header>
@@ -566,7 +574,7 @@
       <div data-credcol="1" style="background: #1C5230; padding: clamp(20px, 2.4vw, 28px) clamp(20px, 2.4vw, 28px);">
         <div data-anim="1" data-statrow="1" style="display: flex; align-items: baseline; gap: 14px; padding: 11px 0; animation: riseSm .8s ease both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
           <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; line-height: 1; color: #FFFFFF; flex: 0 0 auto; min-width: 3.2em;">4.9&#9733;</div>
-          <div style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.9); max-width: 540px;">from 250+ local homeowners across the greater San Gabriel Valley, including Pasadena, Altadena, Arcadia, Glendale, La Ca&ntilde;ada, San Marino, Monrovia, Sierra Madre and other nearby cities</div>
+          <div style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,.9); max-width: 540px;">from 250+ local homeowners across the greater San Gabriel Valley and surrounding foothill communities</div>
         </div>
         <div data-anim="1" data-statrow="1" style="display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-top: 1px solid rgba(255,255,255,.15); animation: riseSm .8s ease .06s both; animation-timeline: view(); animation-range: entry 0% cover 24%;">
           <div style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-size: clamp(20px, 2.4vw, 24px); font-weight: 600; line-height: 1; color: #FFFFFF; flex: 0 0 auto; min-width: 3.2em;">24&ndash;48<span style="font-size: .55em;"> hrs</span></div>
@@ -970,6 +978,25 @@
 
       </div>
       <div style="margin-top: 26px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; letter-spacing: .05em; font-weight: 500; text-transform: uppercase; color: rgba(237,233,222,.45);">No obligation, no card required.</div>
+
+    <details id="service-area" style="margin-top: 30px; background: #FFFFFF; border: 1px solid #E0E0E0; border-radius: 8px; padding: 18px 20px;">
+      <summary style="cursor: pointer; list-style: none; display: block;">
+        <h3 style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.2; color: #16211B; margin: 0;">Check if we serve your city</h3>
+        <p style="font-size: 15px; line-height: 1.55; color: #57605A; margin: 6px 0 0;">We work across the greater San Gabriel Valley.</p>
+        <span style="display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 13px; letter-spacing: .04em; font-weight: 600; text-transform: uppercase; color: #0B2E23; border-bottom: 1px solid rgba(13,68,38,.4); padding-bottom: 3px;">See service area map <span data-sachev="1" aria-hidden="true" style="transition: transform .2s ease;">&#9662;</span></span>
+      </summary>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 18px; align-items: start;">
+        <div data-samap="1">
+          <iframe title="Green Ladder Roofing service area - greater San Gabriel Valley" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Pasadena,+CA&z=11&output=embed" style="width: 100%; aspect-ratio: 4 / 3; border: 1px solid #E0E0E0; border-radius: 6px; display: block;"></iframe>
+        </div>
+        <div data-salist="1">
+          <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 12px; letter-spacing: .05em; font-weight: 600; text-transform: uppercase; color: #55605B;">Examples of cities we cover</div>
+          <ul style="list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; font-size: 15px; line-height: 1.5; color: #16211B;">
+            <li>Pasadena</li><li>Altadena</li><li>Arcadia</li><li>Glendale</li><li>La Ca&ntilde;ada Flintridge</li><li>San Marino</li><li>Monrovia</li><li>Sierra Madre</li><li>South Pasadena</li><li>Temple City</li><li>Duarte</li><li>&hellip;and other nearby SGV cities</li>
+          </ul>
+        </div>
+      </div>
+    </details>
 
     <div style="margin-top: 28px; border-left: 3px solid #C29B47; padding: 4px 0 4px 20px;">
       <h3 style="font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif; font-weight: 400; font-size: 24px; margin: 0;">Have an active leak?</h3>
