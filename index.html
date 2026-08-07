@@ -232,12 +232,10 @@
   }
   /* Crew headshots: collapse extras (2nd row + GAF photo) behind a toggle.
      Mobile: extras hidden, no toggle. Desktop: hidden by default, shown when open. */
-  [data-crewextra] { display: none; }
-  [data-crewsection].is-open [data-crewextra] { display: block; }
-  figure[data-crewextra] { display: none; }
-  [data-crewsection].is-open figure[data-crewextra] { display: block; }
-  [data-crewtoggle] { display: none; }
-  @media (min-width: 768px) { [data-crewtoggle] { display: inline-block; } }
+  [data-crewextra] { display: none !important; }
+  [data-crewsection].is-open [data-crewextra] { display: block !important; }
+  [data-crewtoggle] { display: none !important; }
+  @media (min-width: 768px) { [data-crewtoggle] { display: inline-block !important; } }
   /* Fix (2026-08-06): content inside a collapsible <details data-mobacc> uses
      scroll-driven animations that can leave elements stuck invisible/frozen when
      the section is expanded after load. Force all animated content inside an open
