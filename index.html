@@ -1311,7 +1311,7 @@ class Component extends DCLogic {
     }
     return false;
   }
-  // Auto-open the scheduler 40 seconds after landing, once per visit. If the
+  // Auto-open the scheduler 50 seconds after landing, once per visit. If the
   // visitor already opened it themselves (button click or spdirect link) before
   // the timer fires, we skip the auto-pop so we don't interrupt them.
   (function(){
@@ -1323,7 +1323,7 @@ class Component extends DCLogic {
         if (schedulerOpened) { clearInterval(iv); return; }
         if (openScheduler() || tries > 40) clearInterval(iv);
       }, 200);
-    }, 40000);
+    }, 50000);
   })();
   // spdirect redirect: if someone lands with a ?spdirect=... link (e.g. an old
   // SchedulerPro direct link), we ignore that scheduler and open OUR master
