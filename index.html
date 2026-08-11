@@ -1310,6 +1310,29 @@ class Component extends DCLogic {
     }
     return false;
   }
+  // spdirect redirect: if someone lands with a ?spdirect=... link (e.g. an old
+  // SchedulerPro direct link), we ignore that scheduler and open OUR master
+  // scheduler instead, so every entry point uses the same booking flow. We also
+  // strip the param from the URL so ServiceTitan's own widget script can't
+  // auto-open the wrong scheduler.
+  (function(){
+    try {
+      var params = new URLSearchParams(window.location.search);
+      if (!params.has('spdirect')) return;
+      params.delete('spdirect');
+      var qs = params.toString();
+      var clean = window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', clean);
+      }
+      // Open our master scheduler once the widget is ready.
+      var tries = 0;
+      var iv = setInterval(function(){
+        tries++;
+        if (openScheduler() || tries > 60) clearInterval(iv);
+      }, 200);
+    } catch(e){}
+  })();
   // Delegated click: any .se-booking-show element opens the overlay.
   document.addEventListener('click', function(e){
     var el = e.target.closest && e.target.closest('.se-booking-show');
