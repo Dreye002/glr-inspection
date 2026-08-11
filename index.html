@@ -1303,13 +1303,28 @@ class Component extends DCLogic {
 <script>
 (function(){
   var SCHED_ID = 'sched_s2ia265kdwi92qunr8nrv8x9';
+  var schedulerOpened = false; // set true once the scheduler has been shown
   function openScheduler(){
     try { if (window.gtag) gtag('event','schedule_open',{ page: location.pathname }); } catch(e){}
     if (window._scheduler && typeof window._scheduler.show === 'function') {
-      try { window._scheduler.show({ schedulerId: SCHED_ID }); return true; } catch(e){}
+      try { window._scheduler.show({ schedulerId: SCHED_ID }); schedulerOpened = true; return true; } catch(e){}
     }
     return false;
   }
+  // Auto-open the scheduler 40 seconds after landing, once per visit. If the
+  // visitor already opened it themselves (button click or spdirect link) before
+  // the timer fires, we skip the auto-pop so we don't interrupt them.
+  (function(){
+    setTimeout(function(){
+      if (schedulerOpened) return;
+      var tries = 0;
+      var iv = setInterval(function(){
+        tries++;
+        if (schedulerOpened) { clearInterval(iv); return; }
+        if (openScheduler() || tries > 40) clearInterval(iv);
+      }, 200);
+    }, 40000);
+  })();
   // spdirect redirect: if someone lands with a ?spdirect=... link (e.g. an old
   // SchedulerPro direct link), we ignore that scheduler and open OUR master
   // scheduler instead, so every entry point uses the same booking flow. We also
